@@ -61,7 +61,7 @@ def analytics():
 
 
 
-    dataset = pd.read_csv('bin/finaldata.csv')
+    dataset = pd.read_csv('finaldata.csv')
     dataset = dataset[['Date','Bin_Number','Bin_value','bin_cate']]
    
 
