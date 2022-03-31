@@ -59,6 +59,8 @@ def analytics():
     st.write("Select the Cluster you want to view")
     cluster_value = st.selectbox('Cluster',[1,2,3,4,5])
 
+    
+
 
 
     dataset = pd.read_csv('finaldata.csv')
