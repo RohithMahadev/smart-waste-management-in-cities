@@ -1,6 +1,9 @@
 [deprecation]
 showPyplotGlobalUse = false
 
+[browser]
+wideMode = True
+
 [theme]
 primaryColor = "F36295"
 backgroundColor = "#F0FF33"

@@ -4,7 +4,10 @@ import main
 import warnings
 warnings.simplefilter('ignore')
 
+PAGE_CONFIG = {"page_title" : "SmartWaste", "page_icon":":wastebasket", "layout": "wide"}
 
+st.set_page_config(**PAGE_CONFIG)
+# rest of the code
 names = ['Rohith','Adithya']
 usernames = ['rohith','adithya']
 passwords = ['123','456']
@@ -25,3 +28,4 @@ elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
     st.error('Please enter your username and password',)
+
