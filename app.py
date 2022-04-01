@@ -1,13 +1,23 @@
 import streamlit as st
+
+PAGE_CONFIG = {"page_title" : "SmartWaste", "page_icon":":wastebasket", "layout": "wide"}
+
+st.set_page_config(**PAGE_CONFIG)
+
+
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+
 import streamlit_authenticator as stauth
 import main
 import warnings
 warnings.simplefilter('ignore')
 
-PAGE_CONFIG = {"page_title" : "SmartWaste", "page_icon":":wastebasket", "layout": "wide"}
-
-st.set_page_config(**PAGE_CONFIG)
-# rest of the code
 names = ['Rohith','Adithya']
 usernames = ['rohith','adithya']
 passwords = ['123','456']
