@@ -6,7 +6,7 @@ st.set_page_config(**PAGE_CONFIG)
 
 
 hide_menu_style = """
-        <style>
+      <style>
         #MainMenu {visibility: hidden;}
         </style>
         """

@@ -68,6 +68,12 @@ def dustbindata():
     fig3 = px.scatter(data, x='Date',y='BinLevel', title ='Overall Bin Level ',color_discrete_sequence=['red'])
     fig4 = go.Figure(data=fig2.data + fig3.data)
     st.plotly_chart(fig4, use_container_width=True)
+
+
+    figbar = px.bar(data, x='Date',y='BinLevel', title ='Overall Bin Level ')
+    st.plotly_chart(figbar)
+
+
     
 
 

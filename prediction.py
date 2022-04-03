@@ -1,13 +1,15 @@
+
+from turtle import width
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.figure_factory as ff
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
-
-import random
 from sklearn.neighbors import DistanceMetric
 from math import radians
 
@@ -38,13 +40,19 @@ def pred():
     
     }
 
+    
+    def col(url):
+        st.markdown(f'<b><center><p style="background-color:#00ADB5;color:#EEEEEE;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
 
     present_data_sample = pd.DataFrame(present_data_sample)
 
-    st.subheader("Today's up-to-date Data collected from every bin")
+    col("Today's up-to-date Data collected from every bin")
 
+    figpred = px.pie(present_data_sample,values = 'Binvalue',names='cluster')
+  
 
     st.write(present_data_sample[['cluster','Binvalue']])
+    
 
     present_data_sample['latitude'] = np.radians(present_data_sample['latitude'])
     present_data_sample['longitude'] = np.radians(present_data_sample['longitude'])
@@ -60,14 +68,15 @@ def pred():
     sub_dj['binvalue'] = present_data_sample['Binvalue']
     max_bin = max(sub_dj['binvalue'])
 
-    st.subheader("Choose ective smart waste collection")
+    
+    col("Choose effective smart waste collection")
     selection_value_waste = st.selectbox('Choose',['Yes','No'],key ='wasteselection')
 
 
     if selection_value_waste =='Yes':
       
         
-        st.write("The maximum value at present is {}".format(max_bin))
+        st.write("**The maximum value at present is {}**".format(max_bin))
 
        
         
@@ -108,6 +117,9 @@ def pred():
 
 
 def short():
+    def col(url):
+        st.markdown(f'<b><center><p style="background-color:#00ADB5;color:#EEEEEE;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+
     graph ={
         'Cluster1':['Cluster2','Cluster4','Cluster3'],
 
@@ -133,7 +145,7 @@ def short():
                 
         # Driver function call to print
         # the shortest path
-    st.subheader("Shortest path to reach cluster")
+    col("Shortest path to reach cluster")
     val1 = st.selectbox("Choose FROM Cluster",['Cluster1','Cluster2','Cluster3','Cluster4','Cluster5'],key ="Clusterpoint1")
     val2 = st.selectbox("Choose TO  Cluster",['Cluster1','Cluster2','Cluster3','Cluster4','Cluster5'], key ="Clusterpoint2")
 

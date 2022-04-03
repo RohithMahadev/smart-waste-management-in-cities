@@ -1,7 +1,6 @@
 import streamlit as st
 import Data_etl
 import streamlit.components.v1 as components
-import time
 import prediction
 import analytics
 
@@ -9,7 +8,10 @@ import analytics
 
 
 def app():
-    st.header('Municipality Smart Waste Management System')
+    def col(url):
+        st.markdown(f'<b><center><p style="color:#3EC1D3;font-size:40px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+
+    col('Smart Waste Management System')
 
     db = st.sidebar.radio('View',['Dashboard','Table','Dustbin Data','Location','Analytics','GarbageCollection'])
 

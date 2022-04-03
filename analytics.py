@@ -6,8 +6,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import random
 import streamlit.components.v1 as components
-
-from sklearn.neighbors import DistanceMetric
 from math import radians
 
 
@@ -54,7 +52,9 @@ def data_manipulation():
 def analytics():
 
     #data_manipulation()
-   
+    def col(url):
+        st.markdown(f'<b><center><p style="background-color:#FC5185;color:#F5F5F5;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+
 
     st.write("Select the Cluster you want to view")
     cluster_value = st.selectbox('Cluster',[1,2,3,4,5])
@@ -92,15 +92,16 @@ def analytics():
     grouped_data.reset_index(inplace=True)
     grouped_data = grouped_data[['Date','Bin_value']]
 
-    st.subheader("The bin data for the specific cluster is")
+    col("The bin data for the specific cluster")
     st.write(temp_data)
 
-    st.subheader("The overall cluster data is")
+    col("The overall cluster data")
     st.write(grouped_data)
     grouped_data['Date'] = pd.to_datetime(grouped_data['Date'])
 
 
-    st.subheader('Trend value and mean of the cluster')
+    col('Trend value and mean of the cluster')
+    st.subheader("The displayed values are mean of the data")
 
     fig102 = px.scatter(grouped_data, x='Date',y='Bin_value', trendline='ols',color='Bin_value')
     fig102.update_traces(mode="markers+lines", hovertemplate=None)
@@ -122,7 +123,12 @@ def analytics():
 
 
 def indiv():
-    st.subheader("Individual bin values")
+
+    def col(url):
+        st.markdown(f'<b><center><p style="background-color:#FC5185;color:#F5F5F5;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+
+        
+    col("Individual bin values")
 
     st.write("To display the average waste collected on each day use all")
     HtmlFile = open("home.html", 'r', encoding='utf-8')
