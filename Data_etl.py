@@ -29,13 +29,32 @@ def dataset():
     return data
 
     #data.to_csv("D:/Final Year Project/smart-waste-management-system-in-cities-/Web application/BinData.csv")
+def dataset_1():
+    fb_app = firebase.FirebaseApplication('https://bin2-f2911-default-rtdb.firebaseio.com/', None)
+    result = fb_app.get('/', None)
+    data_1 = pd.DataFrame(result)
+    data_1.dropna(inplace= True)
+    data_1['Date'] = data_1['Bin2'].str[:18]
+    data_1['Date']= pd.to_datetime(data_1['Date'])
+    data_1['bin'] = data_1['Bin2'].str[18:21].astype(int)
 
+    data_1 = data_1[['Date','bin']]
+    data_1.columns = ['Date','BinLevel']
+    data_1.reset_index(inplace = True, drop = True)
+    
+
+    return data_1
 def dataetl():
     data = dataset()
+    data_1 = dataset_1()
     current = data.tail(1)
+    current_1 = data_1.tail(1)
+    def col(url):
+        st.markdown(f'<b><center><p style="background-color:#9900F0;color:#EEEEEE;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+
 
     def graph(x):
-        st.write("The current level of the dustbin in house:001 is")
+        col("The current level of the dustbin in house:001 is")
         st.subheader("House No: 001 - BIN 1")
 
         
@@ -43,7 +62,15 @@ def dataetl():
         fig1 = px.bar(current,x='Date',y='BinLevel',color_discrete_sequence=[x])
         fig1.update(layout_yaxis_range = [0,101])
         st.plotly_chart(fig1, use_container_width=True)
+    def graph_1(x):
+        col("The current level of the dustbin in Society level  is")
+        
+       
+        fig1 = px.bar(current_1,x='Date',y='BinLevel',color_discrete_sequence=[x])
+        fig1.update(layout_yaxis_range = [0,101])
+        st.plotly_chart(fig1, use_container_width=True)
     val = current['BinLevel'].all()
+    val_1 = current_1['BinLevel'].all()
 
     if val>=85:
         x ='red'
@@ -52,8 +79,21 @@ def dataetl():
     if val in range(50,84):
         x ='yellow'
         graph(x)
+
     if val<50:
-        graph(x ='green')
+        x ='green'
+        graph(x)
+
+    if val_1>=85:
+        x ='red'
+        graph_1(x)
+
+    if val_1 in range(50,84):
+        x ='yellow'
+        graph_1(x)
+    if val_1 <50:
+        x ='green'
+        graph_1(x)
 
 def table():
     data = dataset()
@@ -70,7 +110,7 @@ def dustbindata():
     st.plotly_chart(fig4, use_container_width=True)
 
 
-    figbar = px.bar(data, x='Date',y='BinLevel', title ='Overall Bin Level ')
+    figbar = px.histogram(data, x='BinLevel', title ='Overall Bin Level ',color_discrete_sequence=['magenta'],nbins = 20)
     st.plotly_chart(figbar)
 
 

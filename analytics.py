@@ -8,10 +8,8 @@ import random
 import streamlit.components.v1 as components
 from math import radians
 
-
 import warnings
 warnings.simplefilter('ignore')
-
 
 def data_manipulation():
 
@@ -46,8 +44,6 @@ def data_manipulation():
     dataset.reset_index(inplace=True, drop = True)
 
     #dataset.to_csv('finaldata.csv')
-
-   
     
 def analytics():
 
@@ -55,13 +51,8 @@ def analytics():
     def col(url):
         st.markdown(f'<b><center><p style="background-color:#FC5185;color:#F5F5F5;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
 
-
     st.write("Select the Cluster you want to view")
     cluster_value = st.selectbox('Cluster',[1,2,3,4,5])
-
-    
-
-
 
     dataset = pd.read_csv('finaldata.csv')
     dataset = dataset[['Date','Bin_Number','Bin_value','bin_cate']]
@@ -111,16 +102,10 @@ def analytics():
     fig5 = px.scatter(temp_data, x='Bin_Number',y='Bin_value',color ='Bin_value', title ='Bin Level ')
     st.plotly_chart(fig5, use_container_width=True)
     
-
-   
     #fig17 = px.scatter(grouped_data, x='Bin_Number',y='Bin_value',color ='Bin_value',trendline = 'ols')
     #st.plotly_chart(fig17, use_container_width=True)
 
-   
-
     indiv()
-
-
 
 def indiv():
 

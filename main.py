@@ -9,14 +9,14 @@ import analytics
 
 def app():
     def col(url):
-        st.markdown(f'<b><center><p style="color:#3EC1D3;font-size:40px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
+        st.markdown(f'<b><center><p style="color:#332FD0;font-size:40px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
 
     col('Smart Waste Management System')
 
-    db = st.sidebar.radio('View',['Dashboard','Table','Dustbin Data','Location','Analytics','GarbageCollection'])
+    db = st.sidebar.radio('View',['Analytics','GarbageCollection','Live Dashboard','Dustbin Data','Location','Table'])
 
   
-    if db =='Dashboard':
+    if db =='Live Dashboard':
         page = Data_etl
         page.dataetl()
       

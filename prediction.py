@@ -128,7 +128,6 @@ def short():
         'Cluster5':['Cluster4', 'Cluster3']
         }
         
-        # function to find the shortest path
     def find_shortest_path(graph, start, end, path =[]):
                 path = path + [start]
                 if start == end:
