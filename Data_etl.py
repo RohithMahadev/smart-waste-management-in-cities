@@ -17,7 +17,7 @@ def dataset():
     data.dropna(inplace= True)
     data['Date'] = data['Bin2'].str[:18]
     data['Date']= pd.to_datetime(data['Date'])
-    data['bin'] = data['Bin2'].str[19:21].astype(int)
+    data['bin'] = data['Bin2'].str[18:21].astype(int)
     data['temp'] = pd.to_numeric(data['Bin2'].str[22:27],errors='coerce').astype(float)
     data['humidty'] = pd.to_numeric(data['Bin2'].str[28:],errors='coerce').astype(float)
 
