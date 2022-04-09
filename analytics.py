@@ -43,11 +43,11 @@ def data_manipulation():
 
     dataset.reset_index(inplace=True, drop = True)
 
-    dataset.to_csv('finaldata.csv')
+    #dataset.to_csv('finaldata.csv')
     
 def analytics():
 
-    data_manipulation()
+    #data_manipulation()
     def col(url):
         st.markdown(f'<b><center><p style="background-color:#FC5185;color:#F5F5F5;font-size:24px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
 
