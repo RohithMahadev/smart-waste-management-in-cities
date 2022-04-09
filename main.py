@@ -11,7 +11,7 @@ def app():
     def col(url):
         st.markdown(f'<b><center><p style="color:#332FD0;font-size:40px;border-radius:2%;">{url}</p></center></b>', unsafe_allow_html=True)
 
-    col('Smart Waste Management System')
+    col('Smart Waste Management System in cities')
 
     db = st.sidebar.radio('View',['Analytics','GarbageCollection','Live Dashboard','Dustbin Data','Location','Table'])
 
