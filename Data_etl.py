@@ -55,16 +55,15 @@ def dataetl():
 
     def graph(x):
         col("The current level of the dustbin in house:001 is")
-        st.subheader("House No: 001 - BIN 1")
-
-        
-       
+        st.subheader("House No: 001 - BIN 1 (Non-Biodegradable)")
+             
         fig1 = px.bar(current,x='Date',y='BinLevel',color_discrete_sequence=[x])
         fig1.update(layout_yaxis_range = [0,101])
         st.plotly_chart(fig1, use_container_width=True)
     def graph_1(x):
-        col("The current level of the dustbin in Society level  is")
-        
+        col("The current level of the dustbin in house:001 is")
+        st.subheader("House No: 001 - BIN 1 (Biodegradable)")
+
        
         fig1 = px.bar(current_1,x='Date',y='BinLevel',color_discrete_sequence=[x])
         fig1.update(layout_yaxis_range = [0,101])
@@ -114,9 +113,6 @@ def dustbindata():
     st.plotly_chart(figbar)
 
 
-    
-
-
     st.subheader("Temperature and Humidity of Bin1")
     col1,col2 = st.columns(2)
     fig5 = px.scatter(data, x='Date',y='Temperature',color = 'Temperature')
@@ -130,10 +126,6 @@ def dustbindata():
     lineplot  = go.Figure(data=lineplt1.data + lineplt2.data)
     st.plotly_chart(lineplot, use_container_width=True)
 
-
-
-
-    
 
 def location():
     st.text('Live Data of the Dustbin from house is 12.88092504916983, 80.01798407637298')

@@ -5,13 +5,6 @@ PAGE_CONFIG = {"page_title" : "SmartWaste", "page_icon":":wastebasket", "layout"
 st.set_page_config(**PAGE_CONFIG)
 
 
-hide_menu_style = """
-      <style>
-        #MainMenu {visibility: hidden;}
-        </style>
-        """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
-
 
 import streamlit_authenticator as stauth
 import main
