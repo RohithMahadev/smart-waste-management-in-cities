@@ -14,7 +14,7 @@ warnings.simplefilter('ignore')
 def data_manipulation():
 
     df = pd.read_csv('coordinates.csv')
-    dates = pd.date_range(start = '3/10/2022',periods = 70)
+    dates = pd.date_range(start = '3/04/2022',periods = 70)
     bindata = pd.DataFrame([])
     dataset = pd.DataFrame([])
     for values in dates:
